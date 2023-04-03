@@ -1,0 +1,25 @@
+server:
+  port: 8070
+spring:
+  application:
+    name: snc-user-service
+  data:
+    mongodb:
+      uri: mongodb://root:password@localhost:37018/admin
+      database: profile
+  webflux:
+    base-path: /api/v1
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: snc-user-service
+      auto-offset-reset: earliest
+    producer:
+      bootstrap-servers: localhost:9092
+    topics:
+      snc-consumer-topic: snc-user-service
+      snc-producer-topic: snc-gw-service
+
+  logging:
+    level:
+      org.apache.kafka.clients: WARN
